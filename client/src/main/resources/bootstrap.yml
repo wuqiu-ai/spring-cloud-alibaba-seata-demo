@@ -1,0 +1,26 @@
+spring:
+   application:
+      name: demo-client
+   main:
+      allow-bean-definition-overriding: true
+   cloud:
+      loadbalancer:
+         retry:
+            enabled: false
+server:
+   port: 8081
+ribbon:
+   ConnectTimeout: 100000
+   ReadTimeout: 1000000
+   OkToRetryOnAllOperations: false
+feign:
+   sentinel:
+      enabled: false
+
+eureka:
+   client:
+      service-url:
+         defaultZone: http://192.168.202.137:8761/eureka/
+   instance:
+      prefer-ip-address: true
+      instance-id: ${spring.cloud.client.ip-address}:${server.port}
